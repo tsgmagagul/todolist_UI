@@ -1,0 +1,23 @@
+
+<div id="myDIV" class="header">
+  <p>{{CurrentDate | date:'dd/MM/yyyy HH:mm:ss'}}</p>
+  <h2>Add List</h2>
+  <input type="text" id="myInput" placeholder="Title..." [(ngModel)]="todoItem.title"><br><br>
+  <input type="text" id="myInput" placeholder="Description" [(ngModel)]="todoItem.description"><br><br>
+
+  <span (click)="onItemAdd()" class="addBtn">Add</span>
+</div>
+<br>
+<h3>My List</h3>
+<ul id="myUL" *ngFor = "let item of todoItemArray">
+ <div class="todoItem">
+
+<h5>{{item.title}} </h5>
+<li>{{item.description}} </li>
+<br>
+<button class="editBtn" (click)="onEdit(item) "> Edit</button>
+<button class="delBtn" (click)="onDelete(item.todo_id)"> Delete</button>
+<br><br>
+ </div>
+
+</ul>

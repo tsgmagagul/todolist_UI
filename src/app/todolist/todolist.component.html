@@ -1,0 +1,93 @@
+
+
+<router-outlet></router-outlet>
+
+ <div class="container_main">
+    <p>TO DO LIST</p>
+    <div class="box">
+<input type="text" id="input_title" placeholder="Type Title"> 
+<span></span>
+    </div>
+</div> 
+<i routerLinkActive="true" routerLink="/">hi</i>
+<h1>To Do List</h1>
+<body>
+   
+    <div class="container">
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+
+    <form id="form"> 
+        <label for="post"> Add your list</label>
+        <br><br>
+        <input type="text" id="input" placeholder="type item">
+        <br><br>
+        <div id="msg"></div>
+        <button type="submit"> Add</button>
+
+    <div id="post">
+        <div>
+            <p>number 1 </p>
+            <span class="item">
+                <i class="fas fa-edit "></i>
+                <i class="fas fa-trash-alt"></i>
+            </span>
+        </div>
+    </div>
+</form>
+</body>
+
+
+<script>
+    let form = document.getElementById("form");
+    let input = document.getElementById("input");
+    let post = document.getElementById("post");
+    let msg = document.getElementById("msg");
+    
+
+    form.addEventListener("submit", (e) =>
+    {
+        e.preventDefault();
+        console.log("button clicked");
+        formValidation();
+    }); 
+let formValidation = () => {
+    if (input.value === "")
+    {
+        msg.innerHTML = "input cannot be blank";
+        console.log("failure");
+
+    }else{
+        console.log("success");
+        msg.innerHTML=" ";
+        acceptData();
+    }
+
+};
+let data ={};
+let acceptData= () =>{
+data["text"] =input.value;
+console.log(data);
+
+createPost();
+};
+
+let createPost =() =>
+{
+    post.innerHTML += `
+    <div>
+        <p>${data.text}</p>
+        <span class="item">
+            <i onclick ="editPost(this)"
+            class="fas fa-edit"></i>
+            <i onclick ="DeletePost(this)"
+            class="fas fa-trash-alt"></i>
+</span>
+</div>
+`;
+input.value="";
+
+};
+
+</script> 
